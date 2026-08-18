@@ -119,5 +119,5 @@ leadForm?.addEventListener('submit', (event) => {
 window.addEventListener('load', () => {
   window.setTimeout(() => {
     document.body.classList.add('loader-done');
-  }, 3700);
+  }, 3450);
 });

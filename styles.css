@@ -176,3 +176,18 @@ input:invalid:not(:placeholder-shown),textarea:invalid:not(:placeholder-shown){b
 .zip-handle::after{content:"";position:absolute;left:50%;bottom:-64px;width:34px;height:78px;transform:translateX(-50%);border:9px solid #d88913;border-top:0;border-radius:0 0 20px 20px;box-shadow:0 12px 22px rgba(0,0,0,.32)}
 @keyframes zipHandleSettle{0%{top:-10%;opacity:.25}70%{top:61%;opacity:1}100%{top:58%}}
 @media(max-width:850px){.loader-copy{top:auto;left:1.25rem;right:1.25rem;bottom:7rem}.loader-copy strong{font-size:3rem}.zip-track{left:61%;width:190px}.page-loader::before{left:61%;width:210px}.zip-track::before{left:calc(50% - 60px);width:40px}.zip-track::after{right:calc(50% - 60px);width:40px}.zip-handle{top:56%;width:52px;height:92px}.zip-teeth{width:24px}}
+
+/* Loader motion fix: zipper travels top-to-bottom and brightens before reveal */
+.page-loader{animation:loaderExit .65s ease 2.95s forwards}
+.page-loader::before{content:"";position:absolute;inset:0;width:100%;height:100%;transform:none;background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.48) 42%,rgba(255,255,255,.16) 72%,transparent);clip-path:inset(0 0 100% 0);filter:none;z-index:2;animation:screenBrighten 2.65s cubic-bezier(.35,0,.2,1) .15s forwards}
+.page-loader::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,11,28,.52),rgba(3,16,38,.34)),radial-gradient(circle at 50% 8%,rgba(255,184,67,.22),transparent 20%);opacity:1;animation:denimDimOut 2.65s ease .15s forwards;z-index:1;pointer-events:none}
+.loader-copy{z-index:6;animation:loaderCopyLift .9s ease 2.1s forwards}
+.zip-track{z-index:5;top:0;bottom:0;height:100%}
+.zip-handle{top:-14%;animation:zipPullDown 2.65s cubic-bezier(.28,.76,.18,1) .15s forwards}
+.zip-handle::after{animation:zipPullSwing 1.2s ease-in-out .25s 2 alternate}
+@keyframes zipPullDown{0%{top:-14%;opacity:.95}12%{top:8%}48%{top:48%}82%{top:88%}100%{top:112%;opacity:1}}
+@keyframes screenBrighten{0%{clip-path:inset(0 0 100% 0);opacity:.15}45%{opacity:.58}100%{clip-path:inset(0 0 0 0);opacity:.88}}
+@keyframes denimDimOut{0%{opacity:1}70%{opacity:.28}100%{opacity:0}}
+@keyframes loaderCopyLift{to{opacity:0;transform:translateY(-62%)}}
+@keyframes zipPullSwing{from{transform:translateX(-50%) rotate(-3deg)}to{transform:translateX(-50%) rotate(3deg)}}
+@media(max-width:850px){.zip-handle{top:-14%}}
