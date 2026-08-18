@@ -130,3 +130,16 @@ body.loader-done .page-loader{display:none}
 .why-list div{grid-template-columns:1fr;align-items:start;min-height:230px}
 .why-list div:hover{transform:translateY(-6px);border-color:var(--gold)}
 @media(max-width:850px){.why-list{grid-template-columns:1fr}.page-loader{animation-duration:.65s}.zip-track{width:86px}.zip-handle{min-width:108px;font-size:.9rem}}
+
+/* Refinements: cleaner banner, visual why cards and denim zipper loader */
+.hero-media::after{display:none}
+.why-list div{position:relative;overflow:hidden;padding:1.5rem}
+.why-icon{width:64px;height:64px;border-radius:1.1rem;display:grid;place-items:center;background:linear-gradient(135deg,#edf5f6,#fff8ec);font-style:normal;font-size:2rem;box-shadow:inset 0 0 0 1px rgba(15,36,48,.08),0 12px 26px rgba(15,36,48,.1)}
+.why-list div::after{content:"";position:absolute;right:-34px;top:-34px;width:118px;height:118px;border-radius:34% 66% 46% 54%;background:rgba(15,36,48,.06)}
+.page-loader{background:#173d66;background-image:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(0deg,rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(135deg,#0d2b4c,#245d8e 48%,#102d50);background-size:18px 18px,18px 18px,100% 100%}
+.page-loader::before,.page-loader::after{background:#1e5689;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.06) 0 2px,transparent 2px 8px),repeating-linear-gradient(-45deg,rgba(3,18,36,.14) 0 1px,transparent 1px 7px);box-shadow:inset 0 0 90px rgba(3,18,36,.38),inset 0 0 0 2px rgba(255,255,255,.06)}
+.zip-teeth{width:24px;background:repeating-linear-gradient(to bottom,#d8dde1 0 8px,#606a72 8px 12px,#f2f4f5 12px 20px,#606a72 20px 24px);box-shadow:0 0 0 10px rgba(5,24,44,.45),0 0 0 18px rgba(255,255,255,.05)}
+.zip-handle{background:linear-gradient(135deg,#d7dadc,#8e979e 48%,#f5f6f6);color:#0f2430;border:1px solid rgba(255,255,255,.55);text-shadow:0 1px 0 rgba(255,255,255,.55)}
+.zip-handle::before{border-color:#cdd3d7}
+.validation-message{display:block;margin-top:.35rem;color:#b54124;font-size:.82rem;font-weight:800}
+input:invalid:not(:placeholder-shown),textarea:invalid:not(:placeholder-shown){border-color:#b54124;box-shadow:0 0 0 3px rgba(181,65,36,.12)}

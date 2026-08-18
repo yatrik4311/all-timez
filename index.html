@@ -133,10 +133,10 @@
           <h2>Built for retailers, resellers and bulk buyers.</h2>
         </div>
         <div class="why-list numbered">
-          <div><span>01.</span><h3>Established Supply</h3><p>Operating since 1981 with deep category knowledge in kidswear.</p></div>
-          <div><span>02.</span><h3>Wholesale Variety</h3><p>Multiple fits, seasonal styles and day-to-day fashion essentials.</p></div>
-          <div><span>03.</span><h3>Mumbai Market Access</h3><p>Convenient Dadar West location for trade buyers and distributors.</p></div>
-          <div><span>04.</span><h3>Fast Enquiries</h3><p>Lead-ready form flow for quick catalogue requests and bulk order discussions.</p></div>
+          <div><span>01.</span><i class="why-icon" aria-hidden="true">🏷️</i><h3>Established Supply</h3><p>Operating since 1981 with deep category knowledge in kidswear.</p></div>
+          <div><span>02.</span><i class="why-icon" aria-hidden="true">👖</i><h3>Wholesale Variety</h3><p>Multiple fits, seasonal styles and day-to-day fashion essentials.</p></div>
+          <div><span>03.</span><i class="why-icon" aria-hidden="true">📍</i><h3>Mumbai Market Access</h3><p>Convenient Dadar West location for trade buyers and distributors.</p></div>
+          <div><span>04.</span><i class="why-icon" aria-hidden="true">⚡</i><h3>Fast Enquiries</h3><p>Lead-ready form flow for quick catalogue requests and bulk order discussions.</p></div>
         </div>
       </section>
 
@@ -163,12 +163,12 @@
           <p>Share your quantities, preferred fits, sizes and business details. We will receive your enquiry instantly on WhatsApp and respond with availability and next steps.</p>
         </div>
         <form class="contact-form" id="lead-form">
-          <label>Name <input name="name" type="text" required /></label>
-          <label>Email <input name="email" type="email" required /></label>
-          <label>Phone Number <input name="phone" type="tel" required /></label>
-          <label>Business Name <input name="business" type="text" /></label>
-          <label class="full">Address <input name="address" type="text" /></label>
-          <label class="full">Remarks <textarea name="remarks" rows="4" placeholder="Tell us quantity, sizes, fit types or catalogue request"></textarea></label>
+          <label>Name <input name="name" type="text" minlength="2" autocomplete="name" required /></label>
+          <label>Email <input name="email" type="email" autocomplete="email" required /></label>
+          <label>Phone Number <input name="phone" type="tel" inputmode="tel" pattern="[0-9+()\-\s]{8,15}" title="Enter a valid phone number" autocomplete="tel" required /></label>
+          <label>Business Name <input name="business" type="text" minlength="2" autocomplete="organization" required /></label>
+          <label class="full">Address <input name="address" type="text" minlength="8" autocomplete="street-address" required /></label>
+          <label class="full">Remarks <textarea name="remarks" rows="4" minlength="10" placeholder="Tell us quantity, sizes, fit types or catalogue request" required></textarea></label>
           <button class="btn primary full" type="submit">Submit</button>
         </form>
       </section>

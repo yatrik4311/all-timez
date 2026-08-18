@@ -43,9 +43,58 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('.count').forEach(animateCount);
 }
 
-document.querySelector('#lead-form')?.addEventListener('submit', (event) => {
+const leadForm = document.querySelector('#lead-form');
+const showFieldError = (field, message) => {
+  const label = field.closest('label');
+  let error = label.querySelector('.validation-message');
+
+  if (!error) {
+    error = document.createElement('small');
+    error.className = 'validation-message';
+    label.append(error);
+  }
+
+  error.textContent = message;
+};
+
+const clearFieldError = (field) => {
+  field.closest('label')?.querySelector('.validation-message')?.remove();
+};
+
+leadForm?.querySelectorAll('input, textarea').forEach((field) => {
+  field.addEventListener('input', () => {
+    field.setCustomValidity('');
+    clearFieldError(field);
+  });
+});
+
+leadForm?.addEventListener('submit', (event) => {
   event.preventDefault();
-  const formData = new FormData(event.currentTarget);
+  const form = event.currentTarget;
+  const fields = [...form.querySelectorAll('input, textarea')];
+
+  fields.forEach((field) => {
+    field.setCustomValidity('');
+    clearFieldError(field);
+  });
+
+  const phone = form.elements.phone.value.trim();
+  if (phone.replace(/\D/g, '').length < 8) {
+    form.elements.phone.setCustomValidity('Please enter a valid phone number.');
+  }
+
+  fields.forEach((field) => {
+    if (!field.validity.valid) {
+      showFieldError(field, field.validationMessage);
+    }
+  });
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  const formData = new FormData(form);
   const message = [
     'Hi All Timez, I have a kidswear wholesale enquiry.',
     `Name: ${formData.get('name') || ''}`,
