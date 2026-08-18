@@ -58,3 +58,9 @@ document.querySelector('#lead-form')?.addEventListener('submit', (event) => {
 
   window.open(`https://wa.me/919167599272?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
 });
+
+window.addEventListener('load', () => {
+  window.setTimeout(() => {
+    document.body.classList.add('loader-done');
+  }, 3700);
+});
