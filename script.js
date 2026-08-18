@@ -78,9 +78,17 @@ leadForm?.addEventListener('submit', (event) => {
     clearFieldError(field);
   });
 
+  const email = form.elements.email.value.trim();
   const phone = form.elements.phone.value.trim();
-  if (phone.replace(/\D/g, '').length < 8) {
-    form.elements.phone.setCustomValidity('Please enter a valid phone number.');
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phonePattern = /^\d{10}$/;
+
+  if (!emailPattern.test(email)) {
+    form.elements.email.setCustomValidity('Please enter a valid email address.');
+  }
+
+  if (!phonePattern.test(phone)) {
+    form.elements.phone.setCustomValidity('Please enter exactly 10 digits.');
   }
 
   fields.forEach((field) => {
