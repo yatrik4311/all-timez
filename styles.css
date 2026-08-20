@@ -94,7 +94,7 @@ input,textarea{width:100%;margin-top:.45rem;border:1px solid #dbe2e5;border-radi
 .about-image-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.08);object-position: top;}
 .about-image-card div{position:absolute;left:1.25rem;right:1.25rem;bottom:1.25rem;background:rgba(255,255,255,.94);border-radius:1.25rem;padding:1rem 1.2rem;display:grid;gap:.25rem;color:var(--navy)}
 .about-image-card strong{font-family:'Playfair Display',serif;font-size:1.55rem}
-.product-grid article img{width:100%;height:150px;object-fit:cover;border-radius:1.1rem;margin-bottom:1rem;filter:saturate(1.08)}
+.product-grid article img{width:100%;height:396px;object-fit:cover;border-radius:1.1rem;margin-bottom:1rem;filter:saturate(1.08)}
 .product-grid article.highlight{display:grid;align-content:center}
 .why{grid-template-columns:1fr;align-items:start}
 .why .section-copy{max-width:760px}
