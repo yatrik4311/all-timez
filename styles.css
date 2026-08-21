@@ -119,7 +119,7 @@ input,textarea{width:100%;margin-top:.45rem;border:1px solid #dbe2e5;border-radi
 .why-list{grid-template-columns:repeat(2,1fr)}
 .why-list div{grid-template-columns:1fr;align-items:start;min-height:230px}
 .why-list div:hover{transform:translateY(-6px);border-color:var(--gold)}
-@media(max-width:850px){.why-list{grid-template-columns:1fr}
+@media(max-width:850px){.why-list{grid-template-columns:1fr}}
 
 /* Refinements: cleaner banner, visual why cards and denim zipper loader */
 .hero-media::after{display:none}
@@ -376,24 +376,27 @@ input:invalid:not(:placeholder-shown),textarea:invalid:not(:placeholder-shown){b
   position: absolute;
   left: 50%;
   top: 0;
-  width: 8px;
+  width: 14px;
   height: 100%;
   transform: translateX(-50%);
-  background:
-    linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(255,255,255,.05) 20%,
-      rgba(255,218,125,.08) 45%,
-      rgba(255,255,255,.12) 100%
-    );
+  z-index: 3;
+
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255,255,255,.05) 15%,
+    rgba(255,214,120,.15) 40%,
+    rgba(255,244,190,.7) 75%,
+    rgba(255,255,255,1) 100%
+  );
+
+  opacity: .15;
+
+  filter: blur(3px);
 
   box-shadow:
-    0 0 calc(20px + (var(--zip-light) * 45px))
-    rgba(255,215,120,var(--zip-light));
-
-  opacity: .4;
-  transition: opacity .3s ease;
+    0 0 25px rgba(255,210,100,.35),
+    0 0 70px rgba(255,235,170,.18);
 }
 
 
@@ -425,6 +428,7 @@ input:invalid:not(:placeholder-shown),textarea:invalid:not(:placeholder-shown){b
   left: 50%;
   width: 118px;
   transform: translateX(-50%);
+  z-index: 1;
 
   background:
     linear-gradient(
@@ -742,7 +746,6 @@ body.loader-ready .loader-copy {
    --------------------------------------------------------- */
 
 body.loader-ready .zip-track::before {
-
   animation:
     zipperLight
     2.4s
@@ -841,33 +844,38 @@ body.loader-ready .page-loader {
 @keyframes zipperLight {
 
   0% {
-    opacity: .15;
-    transform: translateX(-50%) scaleY(.05);
-    filter: blur(18px);
-  }
-
-  25% {
-    opacity: .35;
-    transform: translateX(-50%) scaleY(.35);
-    filter: blur(15px);
-  }
-
-  50% {
-    opacity: .55;
-    transform: translateX(-50%) scaleY(.65);
+    opacity: .08;
+    width: 8px;
     filter: blur(12px);
   }
 
-  75% {
-    opacity: .8;
-    transform: translateX(-50%) scaleY(.9);
+  25% {
+    opacity: .18;
+    width: 16px;
+    filter: blur(10px);
+  }
+
+  50% {
+    opacity: .35;
+    width: 30px;
     filter: blur(8px);
+  }
+
+  75% {
+    opacity: .65;
+    width: 60px;
+    filter: blur(6px);
   }
 
   100% {
     opacity: 1;
-    transform: translateX(-50%) scaleY(1);
-    filter: blur(2px);
+    width: 110px;
+    filter: blur(12px);
+
+    box-shadow:
+      0 0 35px rgba(255,215,120,.9),
+      0 0 90px rgba(255,235,170,.75),
+      0 0 180px rgba(255,255,255,.55);
   }
 }
 
