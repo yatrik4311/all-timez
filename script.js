@@ -117,7 +117,9 @@ leadForm?.addEventListener('submit', (event) => {
 });
 
 window.addEventListener('load', () => {
-  window.setTimeout(() => {
-    document.body.classList.add('loader-done');
-  }, 3850);
+  /*
+   * The website is now fully loaded.
+   * Start the zipper animation.
+   */
+  document.body.classList.add('loader-ready');
 });
