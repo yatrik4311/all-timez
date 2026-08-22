@@ -140,3 +140,35 @@ function googleTranslateElementInit() {
     'google_translate_element'
   );
 }
+const languageSwitcher =
+  document.querySelector('.language-switcher');
+
+const languageButton =
+  document.querySelector('.language-button');
+
+languageButton?.addEventListener('click', (event) => {
+  event.stopPropagation();
+
+  const isOpen =
+    languageSwitcher.classList.toggle('open');
+
+  languageButton.setAttribute(
+    'aria-expanded',
+    String(isOpen)
+  );
+});
+
+
+document.addEventListener('click', (event) => {
+
+  if (!languageSwitcher?.contains(event.target)) {
+
+    languageSwitcher?.classList.remove('open');
+
+    languageButton?.setAttribute(
+      'aria-expanded',
+      'false'
+    );
+  }
+
+});
