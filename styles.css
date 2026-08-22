@@ -1018,182 +1018,129 @@ body.loader-ready .page-loader {
 
 }
 /* =========================================================
-   PREMIUM GOOGLE LANGUAGE DROPDOWN
+   GOOGLE TRANSLATE - PREMIUM LANGUAGE SELECTOR
    ========================================================= */
 
 .language-switcher {
-  position: relative;
-
   display: flex;
   align-items: center;
-  gap: .55rem;
-
-  margin-left: .5rem;
-
-  z-index: 100;
+  margin-left: .6rem;
+  position: relative;
+  z-index: 9999;
 }
-
-
-/* Language icon */
-
-.language-icon {
-  width: 29px;
-  height: 29px;
-
-  display: grid;
-  place-items: center;
-
-  flex: 0 0 auto;
-
-  border-radius: 50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--rust),
-      var(--gold)
-    );
-
-  color: #fff;
-
-  font-family:
-    "Noto Sans Devanagari",
-    Manrope,
-    Arial,
-    sans-serif;
-
-  font-size: .88rem;
-  font-weight: 800;
-
-  box-shadow:
-    0 4px 12px rgba(199,119,47,.22);
-}
-
-
-/* Google wrapper */
 
 #google_translate_element {
   display: flex;
   align-items: center;
 }
 
-
 /* Google gadget */
 
 .goog-te-gadget {
   font-family: Manrope, Arial, sans-serif !important;
-
   font-size: 0 !important;
-
   color: transparent !important;
 }
 
-
-/* Actual dropdown */
+/* Language dropdown */
 
 .goog-te-gadget .goog-te-combo {
   width: 145px;
   height: 42px;
 
   margin: 0 !important;
+  padding: 0 2.2rem 0 1rem;
 
-  padding: 0 2.1rem 0 .9rem;
-
-  border: 1px solid rgba(15,36,48,.13);
-
+  border: 1px solid rgba(15, 36, 48, .13);
   border-radius: 999px;
 
-  background:
-    linear-gradient(
-      180deg,
-      #ffffff,
-      #fafafa
-    );
+  background: #fff;
 
   color: var(--navy);
 
   font-family:
+    "Noto Sans Devanagari",
+    "Noto Sans Gujarati",
+    "Noto Sans Bengali",
+    "Noto Sans Tamil",
+    "Noto Sans Telugu",
+    "Noto Sans Kannada",
+    "Noto Sans Malayalam",
     Manrope,
     Arial,
     sans-serif;
 
-  font-size: .78rem;
-
+  font-size: .82rem;
   font-weight: 800;
 
+  cursor: pointer;
   outline: none;
 
-  cursor: pointer;
-
   box-shadow:
-    0 6px 18px rgba(15,36,48,.07);
+    0 6px 20px rgba(15,36,48,.08);
 
   transition:
     border-color .2s ease,
-    box-shadow .2s ease,
-    transform .2s ease;
+    box-shadow .2s ease;
 }
-
 
 .goog-te-gadget .goog-te-combo:hover {
   border-color: var(--gold);
 
   box-shadow:
-    0 8px 24px rgba(15,36,48,.11);
-
-  transform: translateY(-1px);
+    0 8px 24px rgba(15,36,48,.12);
 }
-
 
 .goog-te-gadget .goog-te-combo:focus {
   border-color: var(--gold);
 
   box-shadow:
     0 0 0 3px rgba(242,184,75,.15),
-    0 8px 24px rgba(15,36,48,.10);
+    0 8px 24px rgba(15,36,48,.1);
 }
 
 
 /* =========================================================
-   HIDE GOOGLE TRANSLATE TOP BAR
+   GOOGLE TRANSLATE TOP BAR - HIDE
    ========================================================= */
 
-/* Google translation banner */
+/* Google translation iframe */
 
-.goog-te-banner-frame,
-.goog-te-banner-frame.skiptranslate {
+iframe.goog-te-banner-frame,
+iframe.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame {
   display: none !important;
   visibility: hidden !important;
+  opacity: 0 !important;
+
   height: 0 !important;
-  min-height: 0 !important;
+  width: 0 !important;
+
+  border: 0 !important;
 }
 
+/* Google sometimes uses this iframe */
 
-/* Google sometimes creates a second iframe */
-
-iframe.goog-te-banner-frame {
+body > .skiptranslate {
   display: none !important;
 }
 
+/* Prevent Google from pushing the website down */
 
-/* Google moves the entire page down */
-
-html body {
+html,
+body {
   top: 0 !important;
-  position: static !important;
 }
 
-
-/* Remove Google's injected banner spacing */
+/* Google adds inline positioning to body */
 
 body {
+  position: static !important;
   margin-top: 0 !important;
 }
 
 
-/* =========================================================
-   HIDE GOOGLE BRANDING
-   ========================================================= */
+/* Remove Google branding */
 
 .goog-logo-link {
   display: none !important;
@@ -1221,23 +1168,11 @@ body {
     margin: 0;
   }
 
-  .language-icon {
-    width: 28px;
-    height: 28px;
-  }
-
   .goog-te-gadget .goog-te-combo {
-    width: 42px;
-    height: 42px;
+    width: 115px;
+    height: 40px;
 
-    padding: 0;
-
-    border-radius: 50%;
-
-    /* Hide the language text on mobile */
-    font-size: 0;
-
-    text-align: center;
+    font-size: .78rem;
   }
 
 }
