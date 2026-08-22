@@ -131,15 +131,22 @@ function googleTranslateElementInit() {
   new google.translate.TranslateElement(
     {
       pageLanguage: 'en',
-
       includedLanguages:
         'en,hi,gu,mr,bn,ta,te,kn,ml,pa,ur,as,or,sa,ne,sd,kok,mai,doi,brx,mni',
-
       autoDisplay: false
     },
-
     'google_translate_element'
   );
+
+  setTimeout(() => {
+    const select = document.querySelector(
+      '#google_translate_element .goog-te-combo'
+    );
+
+    if (select) {
+      select.options[0].text = 'English';
+    }
+  }, 1000);
 }
 
 
