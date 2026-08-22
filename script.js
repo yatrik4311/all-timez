@@ -137,7 +137,157 @@ function googleTranslateElementInit() {
 
       autoDisplay: false
     },
+
     'google_translate_element'
   );
 }
+/* =========================================================
+   LOCAL LANGUAGE NAMES
+   ========================================================= */
 
+const indianLanguageNames = {
+  en: 'English',
+
+  hi: 'हिन्दी',
+  gu: 'ગુજરાતી',
+  mr: 'मराठी',
+  bn: 'বাংলা',
+  ta: 'தமிழ்',
+  te: 'తెలుగు',
+  kn: 'ಕನ್ನಡ',
+  ml: 'മലയാളം',
+  pa: 'ਪੰਜਾਬੀ',
+  ur: 'اردو',
+  as: 'অসমীয়া',
+  or: 'ଓଡ଼ିଆ',
+  sa: 'संस्कृतम्',
+  ne: 'नेपाली',
+  sd: 'سنڌي',
+  kok: 'कोंकणी',
+  mai: 'मैथिली',
+  doi: 'डोगरी',
+  brx: 'बड़ो',
+  mni: 'মৈতৈলোন'
+};
+
+
+function localizeGoogleLanguages() {
+
+  const select =
+    document.querySelector(
+      '#google_translate_element select.goog-te-combo'
+    );
+
+  if (!select) return;
+
+  [...select.options].forEach((option) => {
+
+    const code = option.value;
+
+    if (indianLanguageNames[code]) {
+      option.textContent =
+        indianLanguageNames[code];
+    }
+
+  });
+}
+const googleTranslateObserver =
+  new MutationObserver(() => {
+
+    localizeGoogleLanguages();
+
+  });
+
+googleTranslateObserver.observe(
+  document.body,
+  {
+    childList: true,
+    subtree: true
+  }
+);
+
+
+/* Initial attempts */
+setTimeout(localizeGoogleLanguages, 500);
+setTimeout(localizeGoogleLanguages, 1000);
+setTimeout(localizeGoogleLanguages, 2000);
+/* =========================================================
+   REMOVE GOOGLE TRANSLATE TOP BAR
+   ========================================================= */
+
+function removeGoogleTranslateBar() {
+
+  /* Remove the Google banner iframe */
+  document
+    .querySelectorAll(
+      'iframe.goog-te-banner-frame, .goog-te-banner-frame'
+    )
+    .forEach((element) => {
+
+      element.remove();
+
+    });
+
+
+  /* Google sometimes creates a skiptranslate wrapper */
+  document
+    .querySelectorAll(
+      'body > .skiptranslate'
+    )
+    .forEach((element) => {
+
+      if (
+        element.querySelector(
+          'iframe.goog-te-banner-frame'
+        )
+      ) {
+        element.remove();
+      }
+
+    });
+
+
+  /* Google moves body down using inline style */
+  document.body.style.setProperty(
+    'top',
+    '0px',
+    'important'
+  );
+
+  document.body.style.setProperty(
+    'margin-top',
+    '0px',
+    'important'
+  );
+
+  document.body.style.setProperty(
+    'position',
+    'static',
+    'important'
+  );
+}
+const googleBarObserver =
+  new MutationObserver(() => {
+
+    removeGoogleTranslateBar();
+
+  });
+
+googleBarObserver.observe(
+  document.documentElement,
+  {
+    childList: true,
+    subtree: true,
+    attributes: true
+  }
+);
+
+
+/* Keep checking after Google translation */
+removeGoogleTranslateBar();
+
+setTimeout(removeGoogleTranslateBar, 100);
+setTimeout(removeGoogleTranslateBar, 500);
+setTimeout(removeGoogleTranslateBar, 1000);
+setTimeout(removeGoogleTranslateBar, 2000);
+setTimeout(removeGoogleTranslateBar, 4000);
