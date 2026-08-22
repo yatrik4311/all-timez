@@ -141,13 +141,14 @@ function googleTranslateElementInit() {
     'google_translate_element'
   );
 }
+
+
 /* =========================================================
-   LOCAL LANGUAGE NAMES
+   NATIVE LANGUAGE NAMES
    ========================================================= */
 
 const indianLanguageNames = {
   en: 'English',
-
   hi: 'हिन्दी',
   gu: 'ગુજરાતી',
   mr: 'मराठी',
@@ -171,83 +172,40 @@ const indianLanguageNames = {
 };
 
 
+/* =========================================================
+   CHANGE GOOGLE LANGUAGE NAMES
+   ========================================================= */
+
 function localizeGoogleLanguages() {
 
-  const select =
-    document.querySelector(
-      '#google_translate_element select.goog-te-combo'
-    );
+  const select = document.querySelector(
+    '#google_translate_element select.goog-te-combo'
+  );
 
   if (!select) return;
 
-  [...select.options].forEach((option) => {
+  Array.from(select.options).forEach((option) => {
 
     const code = option.value;
 
-    if (indianLanguageNames[code]) {
-      option.textContent =
-        indianLanguageNames[code];
+    if (
+      indianLanguageNames[code] &&
+      option.textContent !== indianLanguageNames[code]
+    ) {
+      option.textContent = indianLanguageNames[code];
     }
 
   });
 }
-const googleTranslateObserver =
-  new MutationObserver(() => {
-
-    localizeGoogleLanguages();
-
-  });
-
-googleTranslateObserver.observe(
-  document.body,
-  {
-    childList: true,
-    subtree: true
-  }
-);
 
 
-/* Initial attempts */
-setTimeout(localizeGoogleLanguages, 500);
-setTimeout(localizeGoogleLanguages, 1000);
-setTimeout(localizeGoogleLanguages, 2000);
 /* =========================================================
-   REMOVE GOOGLE TRANSLATE TOP BAR
+   HIDE GOOGLE TRANSLATE BAR
    ========================================================= */
 
-function removeGoogleTranslateBar() {
+function cleanGoogleTranslate() {
 
-  /* Remove the Google banner iframe */
-  document
-    .querySelectorAll(
-      'iframe.goog-te-banner-frame, .goog-te-banner-frame'
-    )
-    .forEach((element) => {
-
-      element.remove();
-
-    });
-
-
-  /* Google sometimes creates a skiptranslate wrapper */
-  document
-    .querySelectorAll(
-      'body > .skiptranslate'
-    )
-    .forEach((element) => {
-
-      if (
-        element.querySelector(
-          'iframe.goog-te-banner-frame'
-        )
-      ) {
-        element.remove();
-      }
-
-    });
-
-
-  /* Google moves body down using inline style */
+  /* Reset Google's page offset */
   document.body.style.setProperty(
     'top',
     '0px',
@@ -260,34 +218,48 @@ function removeGoogleTranslateBar() {
     'important'
   );
 
-  document.body.style.setProperty(
-    'position',
-    'static',
-    'important'
-  );
-}
-const googleBarObserver =
-  new MutationObserver(() => {
+  /* Hide Google's injected banner */
+  document.querySelectorAll(
+    'iframe.goog-te-banner-frame, .goog-te-banner-frame'
+  ).forEach((iframe) => {
 
-    removeGoogleTranslateBar();
+    iframe.style.setProperty(
+      'display',
+      'none',
+      'important'
+    );
+
+    iframe.style.setProperty(
+      'visibility',
+      'hidden',
+      'important'
+    );
+
+    iframe.style.setProperty(
+      'height',
+      '0px',
+      'important'
+    );
 
   });
 
-googleBarObserver.observe(
-  document.documentElement,
-  {
-    childList: true,
-    subtree: true,
-    attributes: true
-  }
+  localizeGoogleLanguages();
+}
+
+
+/*
+ * Google creates its dropdown asynchronously,
+ * so check periodically without using MutationObserver.
+ *
+ * IMPORTANT:
+ * Do NOT replace this with a MutationObserver.
+ */
+
+const translateCleaner = setInterval(
+  cleanGoogleTranslate,
+  500
 );
 
 
-/* Keep checking after Google translation */
-removeGoogleTranslateBar();
-
-setTimeout(removeGoogleTranslateBar, 100);
-setTimeout(removeGoogleTranslateBar, 500);
-setTimeout(removeGoogleTranslateBar, 1000);
-setTimeout(removeGoogleTranslateBar, 2000);
-setTimeout(removeGoogleTranslateBar, 4000);
+/* Initial cleanup */
+cleanGoogleTranslate();
