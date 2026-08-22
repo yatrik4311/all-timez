@@ -1049,7 +1049,7 @@ body.loader-ready .page-loader {
   height: 42px;
 
   margin: 0 !important;
-  padding: 0 2.2rem 0 1rem;
+  padding: 0 1rem 0 1rem;
 
   border: 1px solid rgba(15, 36, 48, .13);
   border-radius: 999px;
