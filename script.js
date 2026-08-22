@@ -123,3 +123,20 @@ window.addEventListener('load', () => {
    */
   document.body.classList.add('loader-ready');
 });
+/* =========================================================
+   GOOGLE TRANSLATE
+   ========================================================= */
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    {
+      pageLanguage: 'en',
+
+      includedLanguages:
+        'en,hi,gu,mr,bn,ta,te,kn,ml,pa,ur,as,or,sa,ne,sd,kok,mai,doi,brx,mni',
+
+      autoDisplay: false
+    },
+    'google_translate_element'
+  );
+}
