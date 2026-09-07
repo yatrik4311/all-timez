@@ -1176,3 +1176,158 @@ body {
   }
 
 }
+/* =========================================
+   IMAGE BAND - PREMIUM MIDDLE CARD
+   ========================================= */
+
+.band-copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 2.5rem;
+  background: #fff8ec;
+  border: 1px solid rgba(199, 119, 47, 0.25);
+  border-radius: 0 0 30px 30px;
+  overflow: hidden;
+}
+
+/* subtle decorative circle */
+.band-copy::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(242, 184, 75, 0.14);
+  top: -85px;
+  right: -55px;
+  pointer-events: none;
+}
+
+.band-copy .eyebrow {
+  position: relative;
+  margin: 0 0 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #c7772f;
+}
+
+.band-copy h2 {
+  position: relative;
+  margin: 0 0 1.1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.5rem, 3.2vw, 3.7rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: #102b38;
+}
+
+.band-intro {
+  position: relative;
+  margin: 0 0 1.5rem;
+  font-size: 0.91rem;
+  line-height: 1.55;
+  color: #233943;
+}
+
+.band-intro strong {
+  font-weight: 800;
+  color: #102b38;
+}
+
+
+/* Feature blocks */
+
+.band-highlights {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.band-highlight {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  padding: 0.85rem 0;
+  border-top: 1px solid rgba(15, 36, 48, 0.12);
+}
+
+.band-highlight:last-child {
+  border-bottom: 1px solid rgba(15, 36, 48, 0.12);
+}
+
+.highlight-number {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #102b38;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.highlight-content {
+  min-width: 0;
+}
+
+.highlight-content h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.1;
+  font-weight: 800;
+  color: #102b38;
+}
+
+.highlight-content span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #c7772f;
+}
+
+.highlight-content p {
+  margin: 0.3rem 0 0;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: #40515a;
+}
+
+.highlight-content strong {
+  font-weight: 800;
+  color: #102b38;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 1050px) {
+  .band-copy {
+    padding: 2.5rem 2rem;
+  }
+
+  .band-copy h2 {
+    font-size: 2.7rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .band-copy {
+    padding: 2.5rem 1.5rem;
+    border-radius: 0 0 24px 24px;
+  }
+
+  .band-copy h2 {
+    font-size: 2.5rem;
+  }
+}
