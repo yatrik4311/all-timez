@@ -1411,7 +1411,7 @@ body {
 }
 
 .footer-socials a:nth-child(2) svg {
-  fill: currentColor;
+  fill: rgb(194 200 195);
   stroke: none;
 }
 
