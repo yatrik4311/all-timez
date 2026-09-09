@@ -113,7 +113,7 @@ leadForm?.addEventListener('submit', (event) => {
     `Remarks: ${formData.get('remarks') || ''}`,
   ].join('\n');
 
-  window.open(`https://wa.me/919167599272?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+  window.open(`https://wa.me/919870284853?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
 });
 
 window.addEventListener('load', () => {
