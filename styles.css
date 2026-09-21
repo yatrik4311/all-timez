@@ -99,7 +99,7 @@ input,textarea{width:100%;margin-top:.45rem;border:1px solid #dbe2e5;border-radi
 .contact-form{grid-template-columns:1fr}
 }
 
-.top-strip{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;padding:.65rem 1rem;background:var(--navy);color:#f6dcc0;font-size:.86rem;font-weight:800;letter-spacing:.04em}
+.top-strip{display:flex;justify-content:space-around;gap:2rem;flex-wrap:wrap;padding:.65rem 1rem;background:var(--navy);color:#f6dcc0;font-size:.86rem;font-weight:800;letter-spacing:.04em}
 .hero::after{content:"Wholesale Kidswear";position:absolute;right:-5rem;bottom:2rem;font-family:'Playfair Display',serif;font-size:clamp(4rem,10vw,10rem);font-weight:800;color:rgba(255,255,255,.08);white-space:nowrap;pointer-events:none}
 .hero-content::before{content:"";position:absolute;left:max(1.2rem,calc((100vw - 1180px)/2));top:6rem;width:92px;height:92px;border:18px solid var(--gold);border-radius:50%;opacity:.85;transform:translate(-35%,-35%)}
 .product-grid article{position:relative;overflow:hidden;min-height:210px}
