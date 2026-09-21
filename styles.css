@@ -1430,6 +1430,7 @@ body {
     transform 0.25s ease;
 }
 
+
 .footer-socials svg {
   width: 17px;
   height: 17px;
@@ -1451,6 +1452,26 @@ body {
   color:var(--navy);
   border-color:#fff;
   transform: translateY(-2px);
+}
+
+.top-strip .footer-socials svg {
+  width: 17px;
+  height: 17px;
+
+  fill: none;
+  stroke: rgb(225 220 192);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.top-strip.footer-socials a:nth-child(2) svg {
+  fill: rgb(225 220 192);
+  stroke: none;
+}
+
+.top-strip.footer-socials svg:hover {
+  stroke: rgb(23 59 86);
 }
 
 @media (max-width: 650px) {
